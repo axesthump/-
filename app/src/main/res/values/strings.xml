@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">GifApp</string>
+    <string name="developers_life">Developers Life</string>
+    <string name="logo">Logo</string>
+    <string name="back_button">back</string>
+    <string name="forward_button">forward</string>
+    <string name="gif">gif</string>
+    <string-array name="pages_name">
+        <item>Последние</item>
+        <item>Лучшие</item>
+        <item>Горячие</item>
+    </string-array>
+</resources>
