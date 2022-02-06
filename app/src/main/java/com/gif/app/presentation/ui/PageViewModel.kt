@@ -17,8 +17,7 @@ class PageViewModel(private val type: PageType): ViewModel() {
     private var pageCount = 0
 
     val liveData = MutableLiveData<GifModel>()
-    private val badValue = GifModel(-1, "", "")
-    private val emptyValue = GifModel(-2, "", "")
+    val errorLiveData = MutableLiveData<Boolean>()
 
     fun prevGif() {
         if (gifPointer == 0)
@@ -30,15 +29,18 @@ class PageViewModel(private val type: PageType): ViewModel() {
     }
 
     fun nextGif() {
-        if (gifPointer + 1 == gifs.size)
-            getGif()
+        if (gifPointer + 1 >= gifs.size) {
+            ++pageCount
+            getGifData()
+            ++gifPointer
+        }
         else {
             ++gifPointer
             liveData.postValue(gifs[gifPointer])
         }
     }
 
-    fun getGif() {
+    fun getGifData() {
         viewModelScope.launch {
             kotlin
                 .runCatching {
@@ -49,15 +51,17 @@ class PageViewModel(private val type: PageType): ViewModel() {
                     }
                 }
                 .onSuccess {
-                    gifs.addAll(it.gifs)
                     if (it.count == 0) {
-                        liveData.postValue(emptyValue)
+                        errorLiveData.postValue(true)
                     } else {
+                        if (errorLiveData.value == true)
+                            errorLiveData.postValue(false)
+                        gifs.addAll(it.gifs)
                         liveData.postValue(gifs[gifPointer])
                     }
                 }
                 .onFailure {
-                    liveData.postValue(badValue)
+                    errorLiveData.postValue(true)
                 }
         }
     }

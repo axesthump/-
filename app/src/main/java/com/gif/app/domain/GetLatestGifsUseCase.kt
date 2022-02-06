@@ -10,8 +10,7 @@ class GetLatestGifsUseCase {
 
     suspend operator fun invoke(pageNumber: Int): GifsModel {
         return withContext(Dispatchers.IO) {
-            val temp = repository.getLatest(pageNumber)
-            temp
+            repository.getLatest(pageNumber)
         }
     }
 }

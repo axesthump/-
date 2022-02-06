@@ -15,10 +15,17 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         with(binding) {
             setContentView(root)
-            viewPager.adapter = PageAdapter(this@MainActivity)
+            val adapter = PageAdapter(this@MainActivity)
+            viewPager.adapter = adapter
             TabLayoutMediator(tabLayout, viewPager) {
                 tab, position -> tab.text = resources.getStringArray(R.array.pages_name)[position]
             }.attach()
+            backGif.setOnClickListener {
+                adapter.backGif()
+            }
+            forwardGif.setOnClickListener {
+                adapter.nextGif()
+            }
         }
 
     }

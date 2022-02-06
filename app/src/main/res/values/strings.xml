@@ -5,6 +5,8 @@
     <string name="back_button">back</string>
     <string name="forward_button">forward</string>
     <string name="gif">gif</string>
+    <string name="error_message">Произошла ошибка, попробуйте повторить</string>
+    <string name="error_btn">повторить</string>
     <string-array name="pages_name">
         <item>Последние</item>
         <item>Лучшие</item>
