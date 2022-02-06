@@ -3,7 +3,6 @@ package com.gif.app.presentation.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.gif.app.presentation.ui.BlockBackButton
 import com.gif.app.presentation.ui.ChangePageListener
 import com.gif.app.presentation.ui.PageFragment
 import com.gif.app.presentation.ui.PageType.LATEST
@@ -29,8 +28,6 @@ class PageAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter(frag
     fun backGif() {
         (pages.find { it.isVisible } as ChangePageListener).onBackClick()
     }
-
-    fun canBlockButton(): Boolean = (pages.find { it.isVisible } as BlockBackButton).canBlock()
 
 
 }

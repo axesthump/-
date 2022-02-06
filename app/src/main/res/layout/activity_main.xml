@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
     <ImageView
@@ -24,6 +26,7 @@
         android:text="@string/developers_life"
         android:textAlignment="center"
         android:textSize="30sp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:tabSelectedTextColor="@android:color/holo_blue_light"
         app:tabIndicatorColor="@android:color/holo_blue_light"
+        app:tabTextColor="@color/black"
         />
 
 
@@ -55,7 +59,6 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:contentDescription="@string/back_button"
-        android:src="@drawable/reply"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/forward_gif"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -63,7 +66,8 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="40dp"
-        android:clickable="false"
+        android:src="@drawable/disable_back_button"
+        android:background="@drawable/disable_back_button"
         />
 
     <ImageButton
@@ -71,7 +75,8 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:contentDescription="@string/forward_button"
-        android:src="@drawable/forward"
+        android:src="@drawable/active_forward_button"
+        android:background="@drawable/active_forward_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
