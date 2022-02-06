@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.gif.app.databinding.ItemPageBinding
 
-class PageFragment: Fragment(), ChangePageListener {
+class PageFragment: Fragment(), ChangePageListener, BlockBackButton {
 
     private lateinit var viewModel: PageViewModel
     private lateinit var viewBinding: ItemPageBinding
@@ -43,6 +43,10 @@ class PageFragment: Fragment(), ChangePageListener {
         viewModel.getGifData()
         viewModel.loadGif()
 
+    }
+
+    override fun onStart() {
+        super.onStart()
     }
 
     private fun initCircularProgressDrawable(): CircularProgressDrawable {
@@ -93,6 +97,8 @@ class PageFragment: Fragment(), ChangePageListener {
     override fun onNextClick() {
         viewModel.nextGif()
     }
+
+    override fun canBlock(): Boolean = viewModel.canBlock()
 
     companion object {
         private const val PAGE_TYPE_KEY = "page_type_key"

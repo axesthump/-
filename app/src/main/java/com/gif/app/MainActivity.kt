@@ -22,9 +22,13 @@ class MainActivity : AppCompatActivity() {
             }.attach()
             backGif.setOnClickListener {
                 adapter.backGif()
+                if (adapter.canBlockButton()) {
+                    it.setClickable(false)
+                }
             }
             forwardGif.setOnClickListener {
                 adapter.nextGif()
+                backGif.setClickable(true)
             }
         }
 

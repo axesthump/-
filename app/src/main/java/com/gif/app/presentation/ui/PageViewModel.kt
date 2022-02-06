@@ -66,5 +66,7 @@ class PageViewModel(private val type: PageType): ViewModel() {
         }
     }
 
+    fun canBlock() = gifPointer == 0
+
 
 }
